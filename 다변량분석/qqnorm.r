@@ -1,6 +1,6 @@
-# ´Ùº¯·® Á¤±ÔºÐÆ÷
+# qqnorm
 
-mydata <- read.csv('./data/³ªÀÌ¿Í¼öÀÔ.csv')
+mydata <- read.csv('./data/ë‚˜ì´ì™€ìˆ˜ìž….csv')
 n <- dim(mydata)[1]
 t <- seq(1,n)
 age_s <- sort(mydata$age); income_s <- sort(mydata$income)
