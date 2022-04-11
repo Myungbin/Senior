@@ -60,3 +60,85 @@ A + B
 A
 t(B)
 A %*% t(B)
+
+
+# 결정식
+
+A = matrix(c(1, -2 , 3, 5), ncol = 2)
+det(A)
+
+A = matrix(c(1,0,1, 2,3,5, 1,4,6), ncol = 3)
+det(A)
+
+# 역행렬
+# 2x2
+library(MASS)
+A = matrix(c(1, -3 , 2, 5), ncol = 2)
+ginv(A) #방법 1 => 패키지 필요
+
+solve(A) # 방법 2
+
+#3x3
+
+A = matrix(c(1,0,1, 2,3,5, 1,4,6), ncol = 3)
+ginv(A)
+
+solve(A)
+
+
+A <- matrix(c(4,-5, 2,-3), ncol=2, byrow=T)
+egnA <- eigen(A)
+
+egnA$values[1]
+egnA$vectors[,1]
+egnA$values[2]
+egnA$vectors[,2]
+
+
+A <- matrix(c(3,1, 1, 3), ncol=2, byrow=T)  
+egnA <- eigen(A)
+egnval <- egnA$values
+egnvec <- egnA$vectors
+
+sum(diag(A))  # trace
+sum(egnval)  
+det(A)        # determinant
+prod(egnval)  
+
+############## Spectral decomposition
+
+egnvec %*% t(egnvec)
+t(egnvec) %*% egnvec
+
+egnval[1] * egnvec[,1] %*% t(egnvec[,1]) +
+    egnval[2] * egnvec[,2] %*% t(egnvec[,2])
+
+egnvec %*% diag(egnval) %*% t(egnvec)
+
+solve(A)  
+egnvec %*% diag(1/egnval) %*% t(egnvec)
+
+###
+
+A <- matrix(c(3,1, 1, 3), ncol=2, byrow=T)  
+egnA <- eigen(A)
+egnval <- egnA$values
+egnvec <- egnA$vectors
+
+rootA <- egnvec %*% diag(sqrt(egnval)) %*% t(egnvec)
+rootA
+rootA %*% rootA
+A
+
+
+############# idempotent matrix
+n <- 3
+In <- diag(rep(1,n))
+Jn <- matrix(rep(1, n*n), ncol=n)
+In
+Jn
+
+A <- In - Jn/n
+A
+A %*% A
+
