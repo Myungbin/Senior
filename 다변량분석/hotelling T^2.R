@@ -1,4 +1,7 @@
 # hotelling T^2
+# 다변량 표본
+# 한 개 모집단, 서로 독립, 모평균 벡터mu, 공분산행렬이 sigma인 p-변량
+# 정규분포를 따르는 n개의 px1확률 벡터 x_1,...,x_n을 확률표본으로 얻은 경우
 df = read.csv('./data/sweat.csv')
 
 df = df[, c(2:4)]
@@ -17,3 +20,4 @@ n = nrow(df)
 T_sq = n*t(x_bar-mu)%*%S_inverse%*%(x_bar-mu)
 
 
+t.test(df)
